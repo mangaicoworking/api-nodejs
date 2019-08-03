@@ -93,6 +93,9 @@ const PersonSchema = new mongoose.Schema({
             }
         }    
     },
+    maisInformacoes: {
+        type: String
+    },
     situacao: {
         // Gestante
         // Cancer
