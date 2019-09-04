@@ -41,10 +41,10 @@ const PersonSchema = new mongoose.Schema({
             type: String
         },
         telefoneFixo: {
-            type: Number
+            type: String
         },
         celular: {
-            type: Number
+            type: String
         },
         email: {
             type: String
