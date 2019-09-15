@@ -101,6 +101,11 @@ const PersonSchema = new mongoose.Schema({
             type: Boolean
         }
     },
+    fornecedor: {
+        status:{
+            type: Boolean
+        }
+    },
     situacao: {
         // Gestante
         // Cancer
