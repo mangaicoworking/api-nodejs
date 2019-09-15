@@ -11,7 +11,8 @@ app.use(cors());
 //Iniciando o DB
 mongoose.connect(
 	//'mongodb://localhost:27017/social_me',
-	'mongodb+srv://mangai:Jaqueira623@mundodata-nflb6.mongodb.net/test?retryWrites=true&w=majority',
+	//'mongodb+srv://mangai:Jaqueira623@mundodata-nflb6.mongodb.net/test?retryWrites=true&w=majority',
+	'mongodb+srv://mangai:Jaqueira623@mundo-data-testes-dmhji.mongodb.net/test?retryWrites=true&w=majority',
 	{ useNewUrlParser: true }
 );
 //Testando DB
