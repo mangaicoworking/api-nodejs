@@ -14,8 +14,13 @@ module.exports = {
 	},
 
 	async store(req, res){
-		const person = await Person.create(req.body);
-		return res.json(person);
+		//const person = await Person.create(req.body);
+		Person.create(req.body);
+		return res.json({
+			"status": "success",
+			"message": "Pessoa Física cadastrada com sucesso"
+		});
+		//return res.json(person);
 		//return res.json(req.body);
 	},
 
