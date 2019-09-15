@@ -93,15 +93,17 @@ const PersonSchema = new mongoose.Schema({
             }
         }    
     },
-    maisInformacoes: {
-        type: String
-    },
-    doador: {
+    beneficiaria: {
         status:{
             type: Boolean
         }
     },
-    fornecedor: {
+    doadora: {
+        status:{
+            type: Boolean
+        }
+    },
+    fornecedora: {
         status:{
             type: Boolean
         }
@@ -130,6 +132,9 @@ const PersonSchema = new mongoose.Schema({
             //idCadastro
             //idUsuario
         //}
+    },
+    maisInformacoes: {
+        type: String
     }
 });
 
