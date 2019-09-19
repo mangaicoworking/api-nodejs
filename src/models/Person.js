@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const rodadasDeSalt = 10;
 
 const PersonSchema = new mongoose.Schema({
     createdAt:{
@@ -138,4 +140,32 @@ const PersonSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('Person', PersonSchema);
+PersonSchema.pre('save', function (next) {
+    if (this.isNew || this.isModified('sistemas.socialMe.password')) {
+        const person = this;
+        bcrypt.hash(this.sistemas.socialMe.password, rodadasDeSalt, function (err, senhaCriptografada) {
+            if (err) {
+                next(err);
+            } else {
+                person.sistemas.socialMe.password = senhaCriptografada;
+                next();
+            }
+        });
+    } else {
+        next();
+    }
+});
+
+//isCorrectPassword
+PersonSchema.methods.isCorrectPassword = function (senha, callback) {
+    bcrypt.compare(senha, this.sistemas.socialMe.password, function (err, same) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(err, same);
+        }
+    });
+};
+
+const Person = mongoose.model('Person', PersonSchema);
+module.exports = Person;

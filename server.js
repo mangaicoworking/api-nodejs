@@ -29,6 +29,6 @@ app.use('/api', require("./src/routes"));
 
 let port = process.env.PORT || 3000;
 
-let server = app.listen(port, function () {
+app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });

@@ -1,5 +1,10 @@
 const express = require('express');
 const routes = express.Router();
+const withAuth = require('./middleware');
+
+const AuthController = require('./controllers/AuthController');
+routes.post('/checkToken', withAuth, AuthController.checkToken);
+routes.post('/logar', AuthController.authenticate);
 
 const PersonController = require('./controllers/PersonController');
 routes.get('/persons', PersonController.index);
