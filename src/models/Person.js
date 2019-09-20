@@ -140,24 +140,8 @@ const PersonSchema = new mongoose.Schema({
     }
 });
 
-PersonSchema.post("update", function(error, res, next) {
-    if (this.isModified('sistemas.socialMe.password')) {
-        const person = this;
-        bcrypt.hash(this.sistemas.socialMe.password, rodadasDeSalt, function (err, senhaCriptografada) {
-            if (err) {
-                next(err);
-            } else {
-                person.sistemas.socialMe.password = senhaCriptografada;
-                next();
-            }
-        });
-    } else {
-        next();
-    }
-});
-
-PersonSchema.pre('update', function (next) {
-    if (this.isModified('sistemas.socialMe.password')) {
+PersonSchema.pre('save', function (next) {
+    if (this.isNew || this.isModified('sistemas.socialMe.password')) {
         const person = this;
         bcrypt.hash(this.sistemas.socialMe.password, rodadasDeSalt, function (err, senhaCriptografada) {
             if (err) {
