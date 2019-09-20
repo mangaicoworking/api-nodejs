@@ -42,7 +42,7 @@ module.exports = {
 			//return res.json('CPF INVÁLIDO');
 			return res.json(1);
 		}else{
-			if (person[0].sistemas.socialMe.password.length > 0){
+			if (person[0].sistemas.socialMe.password.length > 5){
 				//return res.json('CPF VÁLIDO E COM SENHA');
 				return res.json(2);
 			}else{
