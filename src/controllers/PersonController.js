@@ -37,16 +37,16 @@ module.exports = {
 	//Consult CPF
 	async consultCpf(req, res){
 		const person = await Person.find({ 'dados.cpf' : (req.params.cpf) });
-
+		//res.json(person);
 		if (person.length == 0){
-			//return res.json('CPF INVÁLIDO');
+			//return res.json('CPF NÃO ENCONTRADO');
 			return res.json(1);
 		}else{
-			if (person[0].sistemas.socialMe.password.length > 5){
-				//return res.json('CPF VÁLIDO E COM SENHA');
+			if (person[0].sistemas.socialMe.password === null || person[0].sistemas.socialMe.password === undefined){
+				//return res.json('CPF VÁLIDO E SEM SENHA');
 				return res.json(2);
 			}else{
-				//return res.json('CPF VÁLIDO E SEM SENHA');
+				//return res.json('CPF VÁLIDO E COM SENHA');
 				return res.json(3);
 			}
 	
